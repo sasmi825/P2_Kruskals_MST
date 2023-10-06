@@ -12,3 +12,4 @@ $ python main.py
 ```
 
 `main.py` generates a random graph, applies Kruskals algorithm to find MST, gathers time taken, and plots the experimental time and theoretical time in a 3D graph. 
+`requirement.txt` file contains the necessary libraries required to run the repo.
