@@ -80,7 +80,7 @@ def generate_random_graph(n):
 
 
 def generate_plot(df1, df2):
-    # plotting a 3d graph for m,n,mlogn
+    # plotting a 3d graph for m,n and time_taken
     ax = plt.axes(projection='3d')
 
     # plotting experimental
