@@ -11,19 +11,22 @@ import pandas as pd
 # Disjoint Set (Union-Find) data structure
 class DisjointSet:
     def __init__(self, size):
+        # Initialize the parent array where each element is initially its own parent
         self.parent = [i for i in range(size)]
 
     def find(self, node):
-        # function to find
+        # Find the root (representative) of the set that 'node' belongs to
         if self.parent[node] != node:
+            # Checks if 'node' is not its own parent, recursively find the root
             self.parent[node] = self.find(self.parent[node])
         return self.parent[node]
 
     def union(self, u, v):
-        # Union function
+        # Union operation merge two sets ('u' and 'v')
         root_u = self.find(u)
         root_v = self.find(v)
         if root_u != root_v:
+            # If 'u' and 'v' belong to different sets, make one's root the parent of the other
             self.parent[root_u] = root_v
 
 
@@ -40,6 +43,7 @@ def apply_kruskals_algorithm(graph):
     edges.sort(key=lambda x: x[2])
 
     num_nodes = len(graph)
+    # Initialize the minimum spanning tree
     mst = []
     # initializing the disjoint set
     ds = DisjointSet(num_nodes)
@@ -48,6 +52,7 @@ def apply_kruskals_algorithm(graph):
         u, v, weight = edge
         # checking if this edge in mst does not form a cycle
         if ds.find(u) != ds.find(v):
+            # checks if adding this edge does not create a cycle in the MST, add it to the MST
             mst.append(edge)
             ds.union(u, v)
 
